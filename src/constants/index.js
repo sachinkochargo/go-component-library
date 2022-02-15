@@ -206,3 +206,348 @@ const essentialLinks = {
     isEulaEnabled: false,
   },
 };
+export const otherAppsLinks = [
+  {
+    key: "tower",
+    link: "http://192.168.8.50:8087",
+    label: "Tower",
+    icon: "fas fa-broadcast-tower",
+  },
+  {
+    key: "analyticalDashboard",
+    link: "http://192.168.8.50:3002",
+    label: "BI Dashboard",
+    icon: "img:logos/grafana.png",
+  },
+];
+export const tableStatsData = [
+  {
+    key: "total",
+    name: "Total",
+    value: "110",
+  },
+  {
+    key: "in_progress",
+    name: "In Progress",
+    value: "50",
+  },
+  {
+    key: "completed",
+    name: "Completed",
+    value: "25",
+  },
+  {
+    key: "rejected",
+    name: "Rejected",
+    value: "25",
+  },
+];
+
+
+export const dropDownButtonData = [
+  {
+    key: "element1",
+    name: "Element1",
+  },
+  {
+    key: "element2",
+    name: "Element2",
+  },
+  {
+    key: "element3",
+    name: "Element3",
+  },
+];
+
+export const AUTH_MENU_ITEMS = [
+  {
+    link: "/profile",
+    title: "Profile",
+    icon: "get_app",
+  },
+  {
+    link: "/logout",
+    title: "Logout",
+    icon: "login",
+  },
+];
+
+export const TABLE_COLS = [
+  {
+    name: "externalServiceRequestId",
+    required: true,
+    label: "Order info",
+    align: "left",
+    field: (row) => row.externalServiceRequestId,
+    format: (val) => `${val}`,
+    sortable: true,
+  },
+  {
+    name: "calories",
+    align: "center",
+    label: "Station Info",
+    field: (row) => `${row.attributes.ppsId.length > 0 ? row.attributes.ppsId[0] : `--`} (Bins:${row.attributes.ppsBinId})`,
+    sortable: false,
+  },
+  { name: "fat", label: "Fulfillment Window", field: "fat", sortable: false },
+  { name: "orderProgress.progressLabel", label: "Status", field: (row) => row.orderProgress.progressLabel },
+  { name: "protein", label: "Actions", field: "protein" },
+];
+
+export const TABLE_ROW = [
+  {
+     "id":1373,
+     "type":"PICK",
+     "externalServiceRequestId":"my_10th_order",
+     "status":"PROCESSED",
+     "state":"released",
+     "businessState":"Released",
+     "createdOn":"13th Jan 2022 | 2:11 pm",
+     "updatedOn":"13th Jan 2022 | 2:12 pm",
+     "level":"Master Order",
+     "parentAttributes":null,
+     "srProductsCounts":{
+        "exceptions":0,
+        "actuals":4,
+        "expectations":4
+     },
+     "attributes":{
+        "orderType":"--",
+        "simplePriority":"normal",
+        "has_parent":false,
+        "ppsId":[
+           "4"
+        ],
+        "ppsBinId":"9",
+        "userName":"admin",
+        "route":"--",
+        "shipment":"--",
+        "pickBeforeTime":"--",
+        "pickAfterTime":"--",
+        "allocationTime":"--",
+        "startTime":"--",
+        "completionTime":"13th Jan 2022 | 2:12 pm",
+        "orderOptions":{
+           "bintags":null
+        },
+        "noOfOrders":2,
+        "binTagsStr":"--",
+        "executionTime":"--",
+        "carryingUnits":[
+           
+        ]
+     },
+     "orderProgress":{
+        "progressPercent":100,
+        "progressLabel":"4/4"
+     },
+     "canCancel":false,
+     "canChangePAT":false,
+     "canChangePBT":false,
+     "canChangePriority":false
+  },
+  {
+     "id":1366,
+     "type":"PICK",
+     "externalServiceRequestId":"my_6th_order5",
+     "status":"PROCESSED",
+     "state":"released",
+     "businessState":"Completed - Short Picked",
+     "createdOn":"10th Jan 2022 | 9:38 am",
+     "updatedOn":"10th Jan 2022 | 12:51 pm",
+     "level":"Master Order",
+     "parentAttributes":null,
+     "srProductsCounts":{
+        "exceptions":0,
+        "actuals":7,
+        "expectations":10
+     },
+     "attributes":{
+        "orderType":"--",
+        "simplePriority":"normal",
+        "has_parent":false,
+        "ppsId":[
+           "4"
+        ],
+        "ppsBinId":"9",
+        "userName":"admin",
+        "route":"--",
+        "shipment":"--",
+        "pickBeforeTime":"--",
+        "pickAfterTime":"--",
+        "allocationTime":"--",
+        "startTime":"--",
+        "completionTime":"10th Jan 2022 | 9:39 am",
+        "orderOptions":{
+           "bintags":null
+        },
+        "noOfOrders":1,
+        "binTagsStr":"--",
+        "executionTime":"--",
+        "carryingUnits":[
+           
+        ]
+     },
+     "orderProgress":{
+        "progressPercent":70,
+        "progressLabel":"7/10"
+     },
+     "canCancel":false,
+     "canChangePAT":false,
+     "canChangePBT":false,
+     "canChangePriority":false
+  },
+  {
+     "id":1363,
+     "type":"PICK",
+     "externalServiceRequestId":"my_6th_order4",
+     "status":"FAILED",
+     "state":"not_fulfillable",
+     "businessState":"Unfulfillable",
+     "createdOn":"10th Jan 2022 | 9:37 am",
+     "updatedOn":"10th Jan 2022 | 9:37 am",
+     "level":"Master Order",
+     "parentAttributes":null,
+     "srProductsCounts":{
+        "exceptions":0,
+        "actuals":0,
+        "expectations":15
+     },
+     "attributes":{
+        "orderType":"--",
+        "simplePriority":"normal",
+        "has_parent":false,
+        "ppsId":[
+           
+        ],
+        "ppsBinId":"",
+        "userName":"--",
+        "route":"--",
+        "shipment":"--",
+        "pickBeforeTime":"--",
+        "pickAfterTime":"--",
+        "allocationTime":"--",
+        "startTime":"--",
+        "completionTime":"--",
+        "orderOptions":{
+           "bintags":null
+        },
+        "noOfOrders":1,
+        "binTagsStr":"--",
+        "executionTime":"--",
+        "carryingUnits":[
+           
+        ]
+     },
+     "orderProgress":{
+        "progressPercent":0,
+        "progressLabel":"0/15"
+     },
+     "canCancel":false,
+     "canChangePAT":false,
+     "canChangePBT":false,
+     "canChangePriority":false
+  },
+  {
+     "id":1359,
+     "type":"PICK",
+     "externalServiceRequestId":"my_9th_order",
+     "status":"PROCESSED",
+     "state":"released",
+     "businessState":"Completed - Short Picked",
+     "createdOn":"10th Jan 2022 | 8:36 am",
+     "updatedOn":"10th Jan 2022 | 8:40 am",
+     "level":"Master Order",
+     "parentAttributes":null,
+     "srProductsCounts":{
+        "exceptions":1,
+        "actuals":2,
+        "expectations":3
+     },
+     "attributes":{
+        "orderType":"--",
+        "simplePriority":"normal",
+        "has_parent":false,
+        "ppsId":[
+           "4"
+        ],
+        "ppsBinId":"9",
+        "userName":"admin",
+        "route":"--",
+        "shipment":"--",
+        "pickBeforeTime":"--",
+        "pickAfterTime":"--",
+        "allocationTime":"--",
+        "startTime":"--",
+        "completionTime":"10th Jan 2022 | 8:40 am",
+        "orderOptions":{
+           "bintags":null
+        },
+        "noOfOrders":2,
+        "binTagsStr":"--",
+        "executionTime":"--",
+        "carryingUnits":[
+           
+        ]
+     },
+     "orderProgress":{
+        "progressPercent":66,
+        "progressLabel":"2/3"
+     },
+     "canCancel":false,
+     "canChangePAT":false,
+     "canChangePBT":false,
+     "canChangePriority":false
+  },
+  {
+     "id":1356,
+     "type":"PICK",
+     "externalServiceRequestId":"my_6th_order3",
+     "status":"PROCESSED",
+     "state":"released",
+     "businessState":"Completed - Short Picked",
+     "createdOn":"10th Jan 2022 | 8:30 am",
+     "updatedOn":"10th Jan 2022 | 8:31 am",
+     "level":"Master Order",
+     "parentAttributes":null,
+     "srProductsCounts":{
+        "exceptions":1,
+        "actuals":1,
+        "expectations":2
+     },
+     "attributes":{
+        "orderType":"--",
+        "simplePriority":"normal",
+        "has_parent":false,
+        "ppsId":[
+           "4"
+        ],
+        "ppsBinId":"9",
+        "userName":"admin",
+        "route":"--",
+        "shipment":"--",
+        "pickBeforeTime":"--",
+        "pickAfterTime":"--",
+        "allocationTime":"--",
+        "startTime":"--",
+        "completionTime":"10th Jan 2022 | 8:31 am",
+        "orderOptions":{
+           "bintags":null
+        },
+        "noOfOrders":1,
+        "binTagsStr":"--",
+        "executionTime":"--",
+        "carryingUnits":[
+           
+        ]
+     },
+     "orderProgress":{
+        "progressPercent":50,
+        "progressLabel":"1/2"
+     },
+     "canCancel":false,
+     "canChangePAT":false,
+     "canChangePBT":false,
+     "canChangePriority":false
+  }
+]

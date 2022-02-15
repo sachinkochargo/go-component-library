@@ -1,26 +1,13 @@
 <template>
   <q-btn-dropdown
     split
-    to="/start/pick-quasar-flavour"
     :style="{ background: styling.color, color: styling.textColor }"
     :label="label"
   >
-    <q-list>
-      <q-item clickable v-close-popup>
+    <q-list v-if="this.dropdownData">
+      <q-item clickable v-for=" (item, index) in dropdownData" v-bind:key="index" @click="onClick(item)">
         <q-item-section>
-          <q-item-label>Photos</q-item-label>
-        </q-item-section>
-      </q-item>
-
-      <q-item clickable v-close-popup>
-        <q-item-section>
-          <q-item-label>Videos</q-item-label>
-        </q-item-section>
-      </q-item>
-
-      <q-item clickable v-close-popup>
-        <q-item-section>
-          <q-item-label>Articles</q-item-label>
+          <q-item-label>{{ item.name }}</q-item-label>
         </q-item-section>
       </q-item>
     </q-list>
@@ -34,19 +21,24 @@ export default {
   name: "GoDropdownButton",
   props: {
     label: String,
-    dis: String,
     elemType: {
       type: String,
       default: "",
     },
-    filters: {
+    dropdownData: {
       type: Array,
       default: () => [],
     },
+    primary : {
+      type : Boolean
+    },
+    secondary : {
+      type : Boolean
+    }
   },
   methods: {
-    onClick() {
-      this.$emit("onClickcHandler");
+    onClick(item) {
+      this.$emit("onClickcHandler", item);
     },
   },
   computed: {
@@ -71,13 +63,7 @@ export default {
     QItemSection,
   },
   setup(props) {
-    console.log("props button", props.filters);
+    console.log("props dropdownData", props.dropdownData);
   },
 };
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-button {
-  color: 40px 0 0;
-}
-</style>

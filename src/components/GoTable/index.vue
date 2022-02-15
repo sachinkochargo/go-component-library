@@ -5,11 +5,12 @@
       style="height: 60vh"
       :rows="rows"
       :columns="columns"
-      row-key="name"
+      row-key="id"
       selection="single"
-      v-model:selected="selected"
+      v-model:selected="selectedRef"
       hide-selected-banner
       hide-pagination
+      @row-click="rowClick"
     />
 
     <!-- <div class="q-mt-md">Selected: {{ JSON.stringify(selected) }}</div> -->
@@ -17,31 +18,26 @@
 </template>
 
 <script>
-import { ref } from "vue";
 import { QTable } from "quasar";
 export default {
   name: "GoTable",
-  props : {
-    rows : {
-      type : Array
+  props: {
+    rows: {
+      type: Array,
     },
-    columns : {
-      type : Array
-    }
+    columns: {
+      type: Array,
+    },
+    rowClick: {
+      type: Function
+    },
+    selectedRef: {
+      type: HTMLDivElement,
+    },
   },
   components: {
     QTable,
   },
-  setup() {
-    return {
-      selected: ref([]),
-    };
-  },
-  // data(){
-  //   return{
-  //     rows,
-  //     columns
-  //   }
-  // }
+
 };
 </script>

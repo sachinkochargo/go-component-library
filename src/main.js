@@ -1,5 +1,4 @@
-import GoButton from "@/components/Button/Button.vue";
-import GOHeader from "@/components/Header";
+import GoButton from "@/components/Button/GoButton.vue";
 import GoCard from "@/components/Card";
 import GoCardReview from "@/components/Card/GoCardReview";
 import GoCardWrapperLayout from "@/components/Layout/GoCardWrapperLayout";
@@ -8,10 +7,10 @@ import GoCarouselWrapper from "@/components/Layout/GoCarouselWrapper";
 import GoDropdownButton from "@/components/Button/GoDropdownButton.vue";
 import GoAuthButton from "@/components/GoAuthButton";
 import GoTable from "@/components/GoTable";
-
+import GoTopBar from "@/components/GoTopBar";
+import Quasar from 'quasar';
 export {
   GoButton,
-  GOHeader,
   GoCard,
   GoCardReview,
   GoCardWrapperLayout,
@@ -20,11 +19,11 @@ export {
   GoDropdownButton,
   GoAuthButton,
   GoTable,
+  GoTopBar
 };
 
 export default {
   GoButton,
-  GOHeader,
   GoCard,
   GoCardReview,
   GoCardWrapperLayout,
@@ -33,10 +32,11 @@ export default {
   GoDropdownButton,
   GoAuthButton,
   GoTable,
+  GoTopBar,
   install(Vue) {
+    Vue.use(Quasar)
     Vue.component(
       GoButton,
-      GOHeader,
       GoCard,
       GoCardReview,
       GoCardWrapperLayout,
@@ -44,7 +44,8 @@ export default {
       GoCarouselWrapper,
       GoDropdownButton,
       GoAuthButton,
-      GoTable
+      GoTable,
+      GoTopBar
     );
   },
 };

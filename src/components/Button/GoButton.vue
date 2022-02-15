@@ -3,24 +3,33 @@
     :style="{ background: styling.color, color: styling.textColor }"
     :label="label"
     @click="onClick"
-    disabled="dis"
+    :disabled="dis"
+    :class="styling.color"
   />
 </template>
 
 <script>
 import { QBtn } from "quasar";
-import { GoColors } from "./../../constants/types";
+import { GoTypes } from "./../../constants/types";
 export default {
-  name: "Button",
+  name: "GoButton",
   props: {
     label: String,
     dis: Boolean,
-    elemType: {
-      type: String,
-      default: "",
+    onClickHandler: {
+      type: Function,
+    },
+    primary: {
+      type: Boolean,
+      required : false 
+    },
+    secondary: {
+      type: Boolean,
+      required : false 
     },
     onClickHandler : {
-      type : Function
+      type : Function,
+      default : function(){ alert('here !!') }
     }
   },
   methods: {
@@ -31,17 +40,16 @@ export default {
   computed: {
     styling: {
       get() {
-        const colorProps = GoColors(this.elemType);
+        const colorProps = GoTypes(this);
         return {
-          color: colorProps.color,
-          textColor: colorProps.textColor,
+          color: colorProps,
         };
       },
     },
   },
   components: {
     QBtn,
-  }
+  },
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

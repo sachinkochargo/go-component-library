@@ -1,38 +1,35 @@
 // Button.stories.js
 
-import Button from './Button.vue';
-
+import GoTopBar from './index.vue';
+import { tableStatsData, TABLE_ROW, TABLE_COLS } from './../../constants/index';
 export default {
   /* 👇 The title prop is optional.
   * See https://storybook.js.org/docs/vue/configure/overview#configure-story-loading
   * to learn how to generate automatic titles
   */
-  title: 'Button',
-  component: Button,
+  title: 'GoTopBar',
+  component: GoTopBar,
 };
 
 //👇 We create a “template” of how args map to rendering
 const Template = (args) => ({
-  components: { Button },
+  components: { GoTopBar },
   setup() {
     //👇 The args will now be passed down to the template
     
-    return { onClickHandler : onClick ,...args };
+    return { args } ;
   },
   methods : {
     onClick : () => {
       alert('here!!')
     }
-  }
-  template: '<Button v-bind="args" />',
+  },
+  template: '<GoTopBar v-bind="args" />',
 });
 
 
 //👇 Each story then reuses that template
 export const Primary = Template.bind({});
 Primary.args = {
-  elemType: "",
-  label: 'Button',
-  dis : Boolean(false),
-  onClickHandler : () => { alert('hello') }
+    label : 'ABC'
 };

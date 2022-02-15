@@ -1,25 +1,35 @@
 <template>
   <q-card flat bordered class="my-card">
     <q-card-section
-      :style="{ 'background': styling.background, 'color': styling.textColor }"
+      :style="{ background: styling.background, color: styling.textColor }"
+      :class="styling.color"
     >
       <div class="q-pr-xs">
-        <span class="q-pr-xs">{{ title }}</span> 
-        <span v-if="this.tableStatsData" >
-            <span v-for=" itm in tableStatsData " v-bind:key="itm.key">{{ itm.name }} : {{ itm.value }} <span> | </span> </span>
+        <span class="q-pr-xs">{{ title }}</span>
+        <span v-if="this.tableStatsData">
+          <span v-for="(itm, index) in tableStatsData" v-bind:key="itm.key"
+            >{{ itm.name }} : {{ itm.value }}
+            <span v-if="index < tableStatsData.length - 1"> | </span>
+          </span>
         </span>
-        <!-- <span class="q-pl-xs">{{ $t("total") }}</span> -->
       </div>
     </q-card-section>
-    <q-separator  />
+    <q-separator />
     <q-card-section class="q-pa-none">
-      <slot ></slot>
+      <GoTable
+        :rows="rows"
+        :columns="columns"
+        :rowKey="rowKey"
+        :rowClick="onClick"
+        :selectedRef="selectedRef"
+      />
     </q-card-section>
   </q-card>
 </template>
 
 <script>
 import { QCard, QCardSection, QSeparator } from "quasar";
+import GoTable from "./../GoTable";
 import { GoTypes } from "../../constants/types";
 export default {
   name: "GoTableCard",
@@ -31,35 +41,51 @@ export default {
       type: String,
       default: "GoDefault",
     },
-    tableStatsData : {
-        type : Array,
-        // default : ()=>{
-        //     return [
-        //     {
-        //         KEY : 'TEST',
-        //         name : "test"
-        //     }
-        // ]
-        // } 
-    }
+    tableStatsData: {
+      type: Array,
+    },
+    rows: {
+      type: Array,
+      default: () => [],
+    },
+    columns: {
+      type: Array,
+      default: () => [],
+    },
+    rowClick: {
+      type: Function,
+      // default : (row, i, data) => {  }
+    },
+    selectedRef: {
+      type: HTMLDivElement,
+      // default: ref([]),
+    },
+    primary: {
+      type: Boolean,
+    },
+    secondary: {
+      type: Boolean,
+    },
   },
   components: {
     QCard,
     QCardSection,
     QSeparator,
-  },
-  setup(props) {
-    console.log('props', props.tableStatsData);
+    GoTable,
   },
   computed: {
     styling: {
       get() {
+        const className = GoTypes(this);
         return {
-          background: GoTypes(this.cardType).backgroundColor,
-          textColor : GoTypes(this.cardType).textColor
-
+          color: className,
         };
       },
+    },
+  },
+  methods: {
+    onClick: function (row, i, data) {
+      this.$emit("rowClick", row, i, data);
     },
   },
 };
